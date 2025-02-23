@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Old West VPN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <!-- Include your existing styles -->
+</head>
+<body class="min-h-screen bg-dark-bg text-white">
+    <!-- Include the navigation with profile dropdown -->
+
+    <main class="max-w-7xl mx-auto p-6 pt-24">
+        <div class="grid md:grid-cols-4 gap-6">
+            <!-- Settings Sidebar -->
+            <div class="md:col-span-1">
+                <div class="bg-black bg-opacity-50 rounded-xl p-4">
+                    <nav class="space-y-2">
+                        <a href="#account" class="block px-4 py-2 rounded-lg text-green-400 bg-green-500/10">
+                            Account Settings
+                        </a>
+                        <a href="#security" class="block px-4 py-2 rounded-lg text-gray-300 hover:text-green-400 hover:bg-green-500/10">
+                            Security
+                        </a>
+                        <a href="#payments" class="block px-4 py-2 rounded-lg text-gray-300 hover:text-green-400 hover:bg-green-500/10">
+                            Payments & Billing
+                        </a>
+                        <a href="#vpn" class="block px-4 py-2 rounded-lg text-gray-300 hover:text-green-400 hover:bg-green-500/10">
+                            VPN Settings
+                        </a>
+                        <a href="#notifications" class="block px-4 py-2 rounded-lg text-gray-300 hover:text-green-400 hover:bg-green-500/10">
+                            Notifications
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="md:col-span-3 space-y-6">
+                <!-- Account Settings -->
+                <div class="bg-black bg-opacity-50 rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-6">Account Settings</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <img src="default-avatar.png" alt="Profile" class="w-20 h-20 rounded-full border-2 border-green-500">
+                            <button class="px-4 py-2 bg-green-500/10 text-green-400 rounded-lg hover:bg-green-500/20">
+                                Change Avatar
+                            </button>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Username</label>
+                                <input type="text" value="User123" class="w-full bg-black bg-opacity-50 border border-gray-600 rounded-lg px-4 py-2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                <input type="email" value="user@example.com" class="w-full bg-black bg-opacity-50 border border-gray-600 rounded-lg px-4 py-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compound.Finance Integration -->
+                <div class="bg-black bg-opacity-50 rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-6">Payment Settings</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-green-500/10 rounded-lg p-4">
+                            <div class="text-sm text-gray-400">Current Balance</div>
+                            <div class="text-2xl font-bold mt-1">2.5 ETH</div>
+                            <div class="text-green-400">+5.2% APY</div>
+                        </div>
+                        <div class="bg-green-500/10 rounded-lg p-4">
+                            <div class="text-sm text-gray-400">Next Payment</div>
+                            <div class="text-xl font-bold mt-1">0.1 ETH</div>
+                            <div class="text-gray-400">Due in 15 days</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VPN Settings -->
+                <div class="bg-black bg-opacity-50 rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-6">VPN Settings</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-green-500/10 rounded-lg">
+                            <div>
+                                <div class="font-semibold">Auto-Connect</div>
+                                <div class="text-sm text-gray-400">Connect VPN automatically on startup</div>
+                            </div>
+                            <button class="w-12 h-6 bg-green-500 rounded-full relative">
+                                <span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+                            </button>
+                        </div>
+                        <!-- Add more VPN settings -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old West Casino</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: url('casino-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .game-card {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .category-pill {
+            transition: all 0.3s ease;
+        }
+
+        .category-pill:hover, .category-pill.active {
+            background: var(--gold);
+            color: black;
+        }
+
+        .featured-game {
+            height: 400px;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+        }
+
+        .jackpot-counter {
+            background: linear-gradient(45deg, #000, #1a1a1a);
+            border: 1px solid var(--gold);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-95 px-6 py-4 fixed w-full z-50 border-b border-gold">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <a href="dashboard.html" class="text-2xl font-bold brand-text text-gold">OLD WEST CASINO</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#featured" class="text-gray-300 hover:text-gold transition-colors">Featured</a>
+                    <a href="#slots" class="text-gray-300 hover:text-gold transition-colors">Slots</a>
+                    <a href="#table-games" class="text-gray-300 hover:text-gold transition-colors">Table Games</a>
+                    <a href="#live-casino" class="text-gray-300 hover:text-gold transition-colors">Live Casino</a>
+                    <a href="#tournaments" class="text-gray-300 hover:text-gold transition-colors">Tournaments</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="jackpot-counter px-4 py-2 rounded-lg">
+                    <span class="text-gold font-bold">JACKPOT: </span>
+                    <span class="text-gold">125.5 ETH</span>
+                </div>
+                <div class="bg-black bg-opacity-50 px-4 py-2 rounded-lg">
+                    <span class="text-green-400 font-bold">Balance: </span>
+                    <span>2.5 ETH</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Featured Game Hero -->
+    <section class="featured-game relative h-[70vh] flex items-end" style="background-image: url('featured-game.jpg')">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+        <div class="relative max-w-7xl mx-auto w-full p-6 pb-12">
+            <div class="max-w-2xl">
+                <span class="inline-block px-4 py-1 bg-gold/20 text-gold text-sm font-bold tracking-wider rounded-full mb-4">FEATURED GAME</span>
+                <h1 class="text-5xl font-bold mb-4">Wild West Poker Championship</h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-xl">Join the biggest poker tournament of the year with a prize pool of 50 ETH.</p>
+                <div class="flex items-center space-x-6">
+                    <button class="bg-gold text-black px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                        Play Now
+                    </button>
+                    <div class="text-sm border-l border-white/20 pl-6">
+                        <div class="text-gold uppercase tracking-wider">Prize Pool</div>
+                        <div class="text-3xl font-bold">50 ETH</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="relative z-10 bg-dark-bg bg-opacity-90">
+        <!-- Main Content Container -->
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <!-- Game Categories - More organized -->
+            <div class="flex justify-between items-center border-b border-gold/20 pb-6 mb-12">
+                <div class="flex space-x-2">
+                    <button class="category-pill active px-6 py-2 rounded-full font-medium">
+                        All Games
+                    </button>
+                    <a href="slots.html" class="category-pill px-6 py-2 bg-black bg-opacity-50 rounded-full font-medium hover:bg-gold hover:text-black transition-colors">
+                        Slots
+                    </a>
+                    <button class="category-pill px-6 py-2 bg-black bg-opacity-50 rounded-full font-medium">
+                        Table Games
+                    </button>
+                    <button class="category-pill px-6 py-2 bg-black bg-opacity-50 rounded-full font-medium">
+                        Live Casino
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-400">
+                        Sort by:
+                        <select class="bg-transparent border-none text-gold focus:outline-none ml-2">
+                            <option>Popular</option>
+                            <option>Newest</option>
+                            <option>Highest RTP</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Stats Bar -->
+            <div class="grid grid-cols-4 gap-6 mb-12">
+                <div class="bg-black/50 backdrop-blur-sm border border-gold/20 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-gold">12.5K</div>
+                    <div class="text-sm text-gray-400">Active Players</div>
+                </div>
+                <div class="bg-black/50 backdrop-blur-sm border border-gold/20 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-gold">250 ETH</div>
+                    <div class="text-sm text-gray-400">Total Jackpots</div>
+                </div>
+                <div class="bg-black/50 backdrop-blur-sm border border-gold/20 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-gold">98.2%</div>
+                    <div class="text-sm text-gray-400">Average RTP</div>
+                </div>
+                <div class="bg-black/50 backdrop-blur-sm border border-gold/20 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-gold">15K+</div>
+                    <div class="text-sm text-gray-400">Games Today</div>
+                </div>
+            </div>
+
+            <!-- Game Categories Grid -->
+            <div class="grid grid-cols-4 gap-6 mb-16">
+                <!-- Slots Section -->
+                <section class="col-span-4">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-2xl font-bold text-gold">Popular Slots</h2>
+                        <span class="text-sm text-gray-400">12 Games Available</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-6">
+                        <!-- Slot Game 1 -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <a href="slots.html" class="block">
+                                <div class="relative aspect-[4/3]">
+                                    <img src="golden-rush.jpg" alt="Golden Rush" class="w-full h-full object-cover">
+                                    <div class="absolute top-3 right-3 px-3 py-1 bg-red-500 text-xs rounded-full">
+                                        HOT
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-lg font-bold">Golden Rush</h3>
+                                        <span class="text-sm text-gold">97.2% RTP</span>
+                                    </div>
+                                    <p class="text-sm text-gray-400 mb-4">Wild West themed slot</p>
+                                    <div class="flex justify-between items-center text-sm mb-4">
+                                        <span>Min: 0.01 ETH</span>
+                                        <span class="text-green-400">842 Playing</span>
+                                    </div>
+                                    <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                        Play Now
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Slot Game 2 -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="desert-gems.jpg" alt="Desert Gems" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-gold text-xs rounded-full">
+                                    NEW
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Desert Gems</h3>
+                                    <span class="text-sm text-gold">96.8% RTP</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">5-reel treasure hunt</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.005 ETH</span>
+                                    <span class="text-green-400">621 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Play Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Slot Game 3 -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="bandits.jpg" alt="Bandits" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-purple-500 text-xs rounded-full">
+                                    BONUS
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Bandits</h3>
+                                    <span class="text-sm text-gold">96.5% RTP</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">Heist themed slots</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.01 ETH</span>
+                                    <span class="text-green-400">534 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Play Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Slot Game 4 -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="lucky-saloon.jpg" alt="Lucky Saloon" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Lucky Saloon</h3>
+                                    <span class="text-sm text-gold">97.0% RTP</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">Classic western slots</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.015 ETH</span>
+                                    <span class="text-green-400">428 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Play Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Table Games Section -->
+                <section class="col-span-4 mt-16">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-2xl font-bold text-gold">Table Games</h2>
+                        <span class="text-sm text-gray-400">8 Games Available</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-6">
+                        <!-- Poker -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="poker-pro.jpg" alt="Poker Pro" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-green-500 text-xs rounded-full">
+                                    LIVE
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Poker Pro</h3>
+                                    <span class="text-sm text-gold">Live Tables</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">Professional poker room</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.1 ETH</span>
+                                    <span class="text-green-400">1.2k Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Join Table
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Blackjack -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="blackjack.jpg" alt="Blackjack" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-green-500 text-xs rounded-full">
+                                    LIVE
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Blackjack</h3>
+                                    <span class="text-sm text-gold">Live Tables</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">Classic 21 card game</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.05 ETH</span>
+                                    <span class="text-green-400">856 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Join Table
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Roulette -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="roulette.jpg" alt="Roulette" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-green-500 text-xs rounded-full">
+                                    LIVE
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Roulette</h3>
+                                    <span class="text-sm text-gold">Live Tables</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">European roulette</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.02 ETH</span>
+                                    <span class="text-green-400">643 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Join Table
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Baccarat -->
+                        <div class="game-card rounded-xl overflow-hidden">
+                            <div class="relative aspect-[4/3]">
+                                <img src="baccarat.jpg" alt="Baccarat" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 px-3 py-1 bg-green-500 text-xs rounded-full">
+                                    LIVE
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold">Baccarat</h3>
+                                    <span class="text-sm text-gold">Live Tables</span>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4">High-stakes baccarat</p>
+                                <div class="flex justify-between items-center text-sm mb-4">
+                                    <span>Min: 0.1 ETH</span>
+                                    <span class="text-green-400">412 Playing</span>
+                                </div>
+                                <button class="w-full bg-gold text-black py-2 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                    Join Table
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Specialty Games Section -->
+                <section class="col-span-4 mt-16">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-2xl font-bold text-gold">Specialty Games</h2>
+                        <span class="text-sm text-gray-400">4 Games Available</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-6">
+                        <!-- Add 4 more specialty game cards with similar structure -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Live Casino Section - Consistent with above -->
+            <section class="mb-16">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold">Live Casino</h2>
+                    <a href="#" class="text-gold hover:text-yellow-400 transition-colors">View All →</a>
+                </div>
+                <div class="grid grid-cols-4 gap-6">
+                    <!-- Similar card structure as above -->
+                </div>
+            </section>
+
+            <!-- Tournament Section - Clean layout -->
+            <section class="mb-16">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold">Active Tournaments</h2>
+                    <button class="px-4 py-2 border border-gold text-gold rounded-lg hover:bg-gold hover:text-black transition-colors">
+                        View All Tournaments
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div class="game-card p-6 rounded-xl grid grid-cols-6 gap-4 items-center">
+                        <div class="col-span-2 flex items-center space-x-4">
+                            <img src="tournament1.jpg" alt="Tournament" class="w-16 h-16 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold">Weekend Championship</h3>
+                                <p class="text-sm text-gray-400">Texas Hold'em</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-400">Prize Pool</div>
+                            <div class="text-xl font-bold text-gold">25 ETH</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-400">Players</div>
+                            <div class="text-xl">64/128</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-400">Starts In</div>
+                            <div class="text-xl">2h 15m</div>
+                        </div>
+                        <div class="text-right">
+                            <button class="px-6 py-2 bg-gold text-black rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Repeat for more tournaments -->
+                </div>
+            </section>
+
+            <!-- VIP Section - Clean and professional -->
+            <section class="mb-16">
+                <div class="game-card p-8 rounded-xl bg-gradient-to-r from-black to-[#1a1a1a]">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gold mb-4">VIP Benefits</h2>
+                            <p class="text-gray-400 mb-6">Experience exclusive rewards and personalized service as a VIP member.</p>
+                            <button class="px-6 py-3 border border-gold text-gold rounded-lg hover:bg-gold hover:text-black transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- VIP benefit cards -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html> 

@@ -3,68 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Old West</title>
+    <title>Old West VPN - Secure Streaming Access</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
             --coral-red: #FF4040;
             --coral-green: #50C878;
             --gold: #FFD700;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --neon-glow: 0 0 40px rgba(80, 200, 120, 0.3);
         }
 
         body {
-            background-color: #0a0a0a;
+            background-color: var(--dark-bg);
             color: #ffffff;
-            overflow: hidden;
-            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
         }
 
-        .button-primary {
-            background-color: var(--coral-green);
+        .hero-container {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(10, 10, 10, 0.7),
+                rgba(10, 10, 10, 0.8)
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-text {
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .search-container {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 200, 120, 0.2);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
+        .search-input:focus {
+            border-color: var(--coral-green);
+            box-shadow: 0 0 20px rgba(80, 200, 120, 0.2);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--coral-green), #3da656);
+            box-shadow: 0 0 30px rgba(80, 200, 120, 0.3);
+        }
+
         .button-primary:hover {
-            background-color: #45B066;
+            box-shadow: 0 0 40px rgba(80, 200, 120, 0.4);
         }
 
-        .badge {
-            background-color: var(--coral-red);
+        .vpn-badge {
+            background: linear-gradient(135deg, rgba(80, 200, 120, 0.2), rgba(61, 166, 86, 0.2));
+            border: 1px solid rgba(80, 200, 120, 0.3);
+            box-shadow: 0 0 30px rgba(80, 200, 120, 0.2);
+            animation: pulse 3s infinite;
         }
 
-        .star-logo {
-            fill: var(--gold);
-            height: 40px;
-            width: 40px;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(80, 200, 120, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(80, 200, 120, 0.4); }
+            100% { box-shadow: 0 0 30px rgba(80, 200, 120, 0.2); }
+        }
+
+        footer {
+            border-top: 1px solid rgba(80, 200, 120, 0.2);
         }
     </style>
 </head>
-<body class="flex flex-col">
-    <!-- Minimal Navigation -->
-    <nav class="bg-black bg-opacity-90 px-6 py-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center space-x-2">
-                <svg class="star-logo" viewBox="0 0 50 50">
-                    <path d="M25 2.5 L31.5 18.5 L48.5 18.5 L34.5 28.5 L40.5 44.5 L25 34.5 L9.5 44.5 L15.5 28.5 L1.5 18.5 L18.5 18.5 Z"/>
-                </svg>
-                <span class="text-xl">Old West</span>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-90 px-6 py-4 fixed w-full z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold brand-text text-green-400">OLD WEST</a>
+            <div class="flex items-center space-x-6">
+                <a href="login.html" class="button-primary px-6 py-2 rounded-lg">Login</a>
             </div>
         </div>
     </nav>
 
-    <!-- Minimal Hero -->
-    <div class="flex-1 flex items-center justify-center">
-        <div class="max-w-7xl mx-auto px-6 w-full">
-            <div class="flex flex-col items-center space-y-8">
-                <div class="relative">
-                    <img src="motel.gif" alt="VPN Service Demo" class="rounded-lg shadow-2xl">
-                    <div class="absolute -bottom-6 -right-6 badge text-white px-6 py-3 rounded-lg shadow-lg">
-                        VPN
-                    </div>
+    <div class="hero-container">
+        <!-- Full-screen GIF background -->
+        <img src="motel.gif" alt="VPN Service Demo" class="hero-gif">
+        
+        <!-- Overlay for better text readability -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Content on top of the GIF -->
+        <div class="hero-content flex items-center justify-center px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto w-full text-center">
+                <div class="search-container max-w-3xl mx-auto rounded-lg p-2 flex items-center justify-center mb-12">
+                    <form action="https://www.google.com/search" method="GET" class="w-full flex">
+                        <input type="search" 
+                               name="q"
+                               placeholder="Search the web securely..." 
+                               class="search-input w-full px-6 py-3 rounded-lg text-white bg-transparent outline-none text-center"
+                               autocomplete="off">
+                        <button type="submit" class="button-primary px-6 py-3 rounded-lg ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
-                <a href="conference.html" class="button-primary px-12 py-4 rounded-lg text-lg font-semibold text-center text-white">
-                    Login
-                </a>
+
+                <!-- Action Buttons Container -->
+                <div class="flex items-center justify-center space-x-6">
+                    <!-- VPN Badge -->
+                    <div class="vpn-badge inline-flex items-center space-x-3 px-8 py-4 rounded-2xl text-xl font-bold text-white backdrop-blur-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <span class="tracking-wider">VPN PROTECTED</span>
+                    </div>
+
+                    <!-- Casino Games Link -->
+                    <a href="gaming.html" 
+                       class="group relative inline-flex items-center space-x-3 px-8 py-4 rounded-xl 
+                              bg-black bg-opacity-50 backdrop-blur-sm border border-green-500/30
+                              hover:border-green-500 transition-all duration-300">
+                        <div class="absolute inset-0 bg-green-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"/>
+                        </svg>
+                        <span class="text-lg font-semibold text-green-400 group-hover:text-green-300">Explore Casino Games</span>
+                        <svg class="w-5 h-5 text-green-400 transform group-hover:translate-x-1 transition-transform" 
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <footer class="absolute bottom-0 left-0 right-0 p-6 bg-black bg-opacity-50 backdrop-blur-sm">
+                    <div class="max-w-7xl mx-auto flex justify-between items-center">
+                        <div class="flex items-center space-x-6">
+                            <span class="text-sm text-gray-400">© 2024 Old West VPN</span>
+                            <a href="#" class="text-sm text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</a>
+                            <a href="#" class="text-sm text-gray-400 hover:text-green-400 transition-colors">Terms of Service</a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>

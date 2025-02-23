@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Old West VPN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral-green: #50C878;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .login-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 200, 120, 0.2);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: var(--coral-green);
+            box-shadow: 0 0 20px rgba(80, 200, 120, 0.2);
+        }
+
+        .button-primary {
+            background: linear-gradient(45deg, var(--coral-green), #3da656);
+            transition: all 0.3s ease;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(80, 200, 120, 0.3);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+    <div class="login-card w-full max-w-md p-8 rounded-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold brand-text text-green-400">OLD WEST VPN</h1>
+            <p class="text-gray-400 mt-2">Access your secure connection</p>
+        </div>
+        <form action="dashboard.html" class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Username</label>
+                <input type="text" class="input-field w-full px-4 py-3 rounded-lg text-white" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Password</label>
+                <input type="password" class="input-field w-full px-4 py-3 rounded-lg text-white" required>
+            </div>
+            <button type="submit" class="button-primary w-full py-3 rounded-lg font-semibold">
+                Login
+            </button>
+        </form>
+        <div class="mt-6 text-center text-sm">
+            <a href="#" class="text-green-400 hover:text-green-300">Forgot password?</a>
+        </div>
+    </div>
+</body>
+</html> 

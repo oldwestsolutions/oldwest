@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Old West VPN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral-green: #50C878;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .dashboard-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 200, 120, 0.2);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--coral-green);
+            box-shadow: 0 0 10px var(--coral-green);
+        }
+
+        .crypto-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.8), rgba(38, 38, 38, 0.8));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 200, 120, 0.2);
+        }
+
+        .extension-banner {
+            background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+            border: 1px solid var(--coral-green);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="bg-black bg-opacity-90 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <span class="text-2xl font-bold brand-text text-green-400">OLD WEST VPN</span>
+                <a href="gaming.html" class="text-gray-400 hover:text-green-400 transition-colors">Casino Games</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <div class="status-indicator mr-2"></div>
+                    <span class="text-green-400">Connected</span>
+                </div>
+                <a href="settings.html" class="text-gray-400 hover:text-white">Settings</a>
+                <a href="index.html" class="text-gray-400 hover:text-white">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6">
+        <!-- Connection Status Grid -->
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <div class="dashboard-card p-6 rounded-xl">
+                <h2 class="text-xl font-bold mb-4">Connection Status</h2>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="status-indicator mr-2"></div>
+                        <span>Active</span>
+                    </div>
+                    <span class="text-green-400">Premium</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Server Location</span>
+                        <span class="text-green-400">United States</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Upload Speed</span>
+                        <span>50 Mbps</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Download Speed</span>
+                        <span>150 Mbps</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card p-6 rounded-xl">
+                <h2 class="text-xl font-bold mb-4">Network Stats</h2>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Bandwidth Used</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-green-500 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Connection Health</span>
+                            <span>Excellent</span>
+                        </div>
+                        <div class="h-2 bg-gray-700 rounded-full">
+                            <div class="h-2 bg-green-500 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card p-6 rounded-xl">
+                <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
+                <div class="space-y-3">
+                    <button class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg text-left flex items-center">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                        Change Server
+                    </button>
+                    <button class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg text-left flex items-center">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"/>
+                        </svg>
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gaming Section -->
+        <div class="dashboard-card p-6 rounded-xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Featured Games</h2>
+                <a href="gaming.html" class="text-green-400 hover:text-green-300">View All Games</a>
+            </div>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg cursor-pointer hover:bg-opacity-70">
+                    <img src="poker.jpg" alt="Poker" class="w-full h-32 object-cover rounded mb-2">
+                    <div class="font-semibold">Poker</div>
+                    <div class="text-sm text-gray-400">1.2k Playing</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg cursor-pointer hover:bg-opacity-70">
+                    <img src="blackjack.jpg" alt="Blackjack" class="w-full h-32 object-cover rounded mb-2">
+                    <div class="font-semibold">Blackjack</div>
+                    <div class="text-sm text-gray-400">843 Playing</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg cursor-pointer hover:bg-opacity-70">
+                    <img src="slots.jpg" alt="Slots" class="w-full h-32 object-cover rounded mb-2">
+                    <div class="font-semibold">Wild West Slots</div>
+                    <div class="text-sm text-gray-400">2.1k Playing</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded-lg cursor-pointer hover:bg-opacity-70">
+                    <img src="roulette.jpg" alt="Roulette" class="w-full h-32 object-cover rounded mb-2">
+                    <div class="font-semibold">Roulette</div>
+                    <div class="text-sm text-gray-400">567 Playing</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
